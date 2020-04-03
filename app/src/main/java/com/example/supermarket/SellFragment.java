@@ -163,7 +163,7 @@ public class SellFragment extends Fragment {
                 if (!s.toString().equals(current)) {
                     et_harga.removeTextChangedListener(this);
 
-                    Locale local = Locale.getDefault();
+                    Locale local = new Locale("us", "US");
                     String replaceable = String.format("[$,.]",
                             NumberFormat.getCurrencyInstance().getCurrency()
                                     .getSymbol(local));
@@ -267,7 +267,7 @@ public class SellFragment extends Fragment {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                                Locale local = Locale.getDefault();
+                                Locale local = new Locale("us", "US");
                                 String replace = String.format("[$]", NumberFormat.getCurrencyInstance().getCurrency().getSymbol(local));
                                 String clean = et_harga.getText().toString().replaceAll(replace, "");
 
