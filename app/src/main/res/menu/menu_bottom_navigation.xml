@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:iconTint="@color/colorAccent"
+        android:title="Home">
+    </item>
+    <item
+        android:id="@+id/menuOngoing"
+        android:enabled="true"
+        android:icon="@drawable/ic_ongoing"
+        android:iconTint="@color/colorAccent"
+        android:title="Ongoing">
+    </item>
+    <item android:id="@+id/menuHistory"
+        android:title="History"
+        android:icon="@drawable/ic_order"
+        android:iconTint="@color/colorAccent">
+    </item>
+    <item android:id="@+id/menuCart"
+        android:title="Cart"
+        android:icon="@drawable/ic_shopping_cart"
+        android:iconTint="@color/colorAccent">
+    </item>
+    <item android:id="@+id/menuProfile"
+        android:title="Akun"
+        android:icon="@drawable/ic_username"
+        android:iconTint="@color/colorAccent">
+    </item>
+
+</menu>

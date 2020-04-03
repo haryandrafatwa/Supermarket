@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_identitas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="16dp"
+        android:background="@drawable/bg_menu_beranda_green_bawah">
+
+        <RelativeLayout
+            android:id="@+id/layout_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_nama_akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:fontFamily="@font/sf_pro_display_semibold"/>
+
+            <TextView
+                android:id="@+id/tv_email_akun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:layout_below="@id/tv_nama_akun"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro_display_medium"/>
+
+        </RelativeLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_akun_picture"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_balance_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_below="@id/layout_nama"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_pro_display_medium"/>
+
+        <ProgressBar
+            android:id="@+id/pb_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@android:color/white"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:layout_below="@id/layout_identitas"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:paddingLeft="32dp"
+        android:paddingVertical="8dp"/>
+    
+    <ImageView
+        android:id="@+id/separator_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/separator"
+        android:layout_below="@id/profile"/>
+
+    <TextView
+        android:id="@+id/notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        android:layout_below="@id/separator_1"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:paddingVertical="8dp"
+        android:paddingLeft="32dp"/>
+
+    <ImageView
+        android:id="@+id/separator_2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/separator"
+        android:layout_below="@id/notification"/>
+
+    <TextView
+        android:id="@+id/termcondition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terms and Condition"
+        android:layout_below="@id/separator_2"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:paddingLeft="32dp"
+        android:paddingVertical="8dp"/>
+
+    <ImageView
+        android:id="@+id/separator_3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/separator"
+        android:layout_below="@id/termcondition"/>
+
+    <TextView
+        android:id="@+id/privacypolicy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy and Policy"
+        android:layout_below="@id/separator_3"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:paddingLeft="32dp"
+        android:paddingVertical="8dp"/>
+
+    <ImageView
+        android:id="@+id/separator_4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/separator"
+        android:layout_below="@id/privacypolicy"/>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Log Out"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:background="@drawable/bg_btn"
+        android:layout_marginBottom="32dp"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/select_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select a Method"
+            android:textSize="18sp"
+            android:fontFamily="@font/sf_pro_display_semibold"
+            android:textColor="@color/colorText"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/select_method"
+            android:layout_marginTop="16dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_solid_green"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imageCamera"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_camera"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Camera"
+                    android:layout_toRightOf="@id/imageCamera"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@android:color/white"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_btn_solid_green"
+                android:layout_toRightOf="@id/layout_camera"
+                android:layout_marginLeft="8dp"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/imageGallery"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_gallery"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Gallery"
+                    android:layout_toRightOf="@id/imageGallery"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@android:color/white"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

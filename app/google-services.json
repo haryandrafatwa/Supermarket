@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "186561602051",
+    "firebase_url": "https://supermarket-telu.firebaseio.com",
+    "project_id": "supermarket-telu",
+    "storage_bucket": "supermarket-telu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:186561602051:android:2c00687d51894088bae436",
+        "android_client_info": {
+          "package_name": "com.example.supermarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "186561602051-753rs8ge3kp45i2c4oie92j0odu6s319.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.supermarket",
+            "certificate_hash": "1cd1cd534a3902988e968b7f5f0ac35878da3e32"
+          }
+        },
+        {
+          "client_id": "186561602051-unlkjkdgjdfjc8vob8fhlh31rjt7fona.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyBGc9zlQgbmuQ3VEKKTxWVePjI83YxKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "186561602051-unlkjkdgjdfjc8vob8fhlh31rjt7fona.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_sell"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorAccent"
+            android:theme="@style/ToolbarThemeGreen">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sell"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sf_pro_display_regular"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_sell"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="32dp"
+            android:background="@drawable/bg_btn_solid_white"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_image_sell"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/iv_image_sell"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone"/>
+
+                <ImageButton
+                    android:id="@+id/btn_add_image_sell"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_add_circle_outline"
+                    android:backgroundTint="@color/colorAccent"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/hapus_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete Image"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_below="@id/cv_image_sell"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:orientation="horizontal"
+                android:layout_below="@id/hapus_foto"
+                android:layout_marginTop="20dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_kategori"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/et_kategori_sell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:inputType="text"
+                    android:textColor="@color/colorInputText"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_edittext"
+                    android:fontFamily="@font/sf_pro_display_regular"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_nama_sell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="Nama barang"
+                android:inputType="text"
+                android:textColor="@color/colorInputText"
+                android:textSize="14sp"
+                android:background="@drawable/bg_edittext"
+                android:layout_below="@id/kategori"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/et_alamat_sell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp"
+                android:padding="10dp"
+                android:hint="Alamat"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorInputText"
+                android:textSize="14sp"
+                android:background="@drawable/bg_edittext"
+                android:layout_below="@id/et_nama_sell"
+                android:gravity="start"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_marginTop="20dp" />
+
+            <LinearLayout
+                android:id="@+id/kondisi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:orientation="horizontal"
+                android:layout_below="@+id/et_alamat_sell"
+                android:layout_marginTop="20dp">
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spin_kondisi"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/et_kondisi_sell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:inputType="text"
+                    android:textColor="@color/colorInputText"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_edittext"
+                    android:fontFamily="@font/sf_pro_display_regular"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/kondisi"
+                android:layout_marginTop="20dp" >
+
+                <TextView
+                    android:id="@+id/stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unit"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorInputText"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/et_stok_sell"/>
+
+                <EditText
+                    android:id="@+id/et_stok_sell"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:hint="Stok barang"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:textColor="@color/colorInputText"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_edittext"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_harga_sell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="Harga barang"
+                android:inputType="number"
+                android:textColor="@color/colorInputText"
+                android:textSize="14sp"
+                android:background="@drawable/bg_edittext"
+                android:layout_below="@id/layout_stock"
+                android:gravity="start"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_marginTop="20dp" />
+
+            <EditText
+                android:id="@+id/et_deskripsi_sell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:hint="Deskripsi barang"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorInputText"
+                android:textSize="14sp"
+                android:background="@drawable/bg_edittext"
+                android:layout_below="@id/et_harga_sell"
+                android:gravity="start"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:id="@+id/btn_finish_sell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_deskripsi_sell"
+                android:text="Post"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:background="@drawable/bg_btn"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="4dp"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

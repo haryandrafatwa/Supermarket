@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_home"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorAccent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:textAllCaps="true"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/hai_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_below="@id/toolbar_home"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorText"
+        android:fontFamily="@font/sf_pro_display_semibold"/>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_atas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_menu_beranda_dark_green_atas"
+        android:layout_marginHorizontal="16dp"
+        android:paddingLeft="16dp"
+        android:paddingVertical="8dp"
+        android:layout_below="@id/hai_user">
+
+        <ImageView
+            android:id="@+id/wallet"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ic_topup"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+        android:id="@+id/marketPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/wallet"
+        android:text="MarketPay"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/sf_pro_display_semibold"/>
+
+        <LinearLayout
+            android:id="@+id/add_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_add_circle_outline"
+                android:backgroundTint="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tv_topup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add balance"
+                android:textSize="14sp"
+                android:layout_below="@id/layout_atas"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:elevation="6dp"
+                android:layout_gravity="center_horizontal|center_vertical"/>
+            
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_below="@id/layout_atas"
+        android:layout_marginHorizontal="16dp"
+        android:paddingLeft="16dp"
+        android:paddingVertical="8dp"
+        android:background="@drawable/bg_menu_beranda_green_bawah"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:elevation="6dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_buy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_balance"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_btn_solid_white"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:id="@+id/iv_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_solid_white"
+            android:backgroundTint="@color/colorAccent"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/ic_buy"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BUY"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="28sp"
+            android:layout_toRightOf="@id/iv_buy"
+            android:textColor="@color/colorText"
+            android:fontFamily="@font/sf_pro_display_bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_sell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_buy"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_btn_solid_white"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:id="@+id/iv_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_solid_white"
+            android:backgroundTint="@color/colorAccent"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/ic_sell"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/sell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SELL"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="28sp"
+            android:layout_toRightOf="@id/iv_sell"
+            android:textColor="@color/colorText"
+            android:fontFamily="@font/sf_pro_display_bold"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
