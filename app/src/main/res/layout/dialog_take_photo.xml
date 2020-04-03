@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/select_method"
+            android:gravity="center"
             android:layout_marginTop="16dp">
 
             <RelativeLayout
@@ -45,6 +46,7 @@
                     android:fontFamily="@font/sf_pro_display_semibold"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"/>
 
             </RelativeLayout>
@@ -72,6 +74,7 @@
                     android:fontFamily="@font/sf_pro_display_semibold"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="8dp"
+                    android:textSize="12sp"
                     android:textColor="@android:color/white"/>
 
             </RelativeLayout>
