@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,10 +26,11 @@ public class HomeFragment extends Fragment {
 
     private TextView tv_hai,tv_balance;
     private LinearLayout add_balance;
-    private RelativeLayout buy,sell;
+    private RelativeLayout buy,sell,atas;
+    private ProgressBar progressBar;
 
     private BottomNavigationView bottomNavigationView;
-    private DatabaseReference userRefs;
+    private DatabaseReference userRefs,marketRefs;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class HomeFragment extends Fragment {
         add_balance = getActivity().findViewById(R.id.add_balance);
         buy = getActivity().findViewById(R.id.layout_buy);
         sell = getActivity().findViewById(R.id.layout_sell);
+        atas = getActivity().findViewById(R.id.layout_home_marketpay);
+        progressBar = getActivity().findViewById(R.id.pb_home);
 
         userRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -65,6 +69,39 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tv_hai.setText("Hai, "+dataSnapshot.child("name").getValue().toString()+"!");
                 tv_balance.setText("Balance: $"+dataSnapshot.child("saldo").getValue().toString());
+                atas.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        marketRefs = FirebaseDatabase.getInstance().getReference().child("MarketPay").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        marketRefs.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dsp : dataSnapshot.getChildren()){
+                    if(dsp.child("status").getValue().toString().equals("Waiting")){
+                        add_balance.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ConfirmationFragment confirmationFragment =new ConfirmationFragment();
+                                setFragment(confirmationFragment);
+                            }
+                        });
+                    }else{
+                        add_balance.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                EnterAmountFragment enterAmountFragment = new EnterAmountFragment();
+                                setFragment(enterAmountFragment);
+                            }
+                        });
+                    }
+                }
             }
 
             @Override
