@@ -17,12 +17,14 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -164,7 +166,92 @@ public class BuyDetailFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initializeDialogSuccess();
+                if (stock > 0){
+                    final HashMap hashMap = new HashMap();
+                    hashMap.put("id",id);
+                    hashMap.put("nama_produk",name);
+                    hashMap.put("price",price);
+                    hashMap.put("totalPrice",price);
+                    hashMap.put("amount",1);
+                    hashMap.put("category",category);
+                    hashMap.put("imageURL",imageURL);
+                    final DatabaseReference cartRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart");
+                    cartRefs.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (!dataSnapshot.hasChild(id)){
+
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(id);
+                                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        int stok = Integer.valueOf(dataSnapshot.child("stok").getValue().toString());
+                                        stock = stok-1;
+                                        tv_stock.setText(stock+"");
+                                        dataSnapshot.child("stok").getRef().setValue(stok-1);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+                                cartRefs.child(id).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task) {
+                                        initializeDialogSuccess();
+                                    }
+                                });
+                            }else{
+                                dataSnapshot.child(id).getRef().addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(id);
+                                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                int stok = Integer.valueOf(dataSnapshot.child("stok").getValue().toString());
+                                                stock = stok-1;
+                                                tv_stock.setText(stock+"");
+                                                dataSnapshot.child("stok").getRef().setValue(stok-1);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
+
+                                        int amount, price, newAmount, newPrice;
+                                        price = Integer.valueOf(dataSnapshot.child("price").getValue().toString());
+                                        amount = Integer.valueOf(dataSnapshot.child("amount").getValue().toString());
+                                        newAmount = amount+1;
+                                        newPrice = price*newAmount;
+                                        Toast.makeText(getActivity(), "New Amount: "+newAmount+"; Total Price: "+newPrice, Toast.LENGTH_SHORT).show();
+                                        cartRefs.child(id).child("amount").setValue(newAmount);
+                                        cartRefs.child(id).child("totalPrice").setValue(newPrice);
+
+                                        initializeDialogSuccess();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }else{
+                    initializeDialogFailed();
+                }
             }
         });
 
@@ -223,33 +310,9 @@ public class BuyDetailFragment extends Fragment {
         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(final DialogInterface dialog, int which) {
-
-                final HashMap hashMap = new HashMap();
-                hashMap.put("id",id);
-                hashMap.put("nama_produk",name);
-                hashMap.put("price",price);
-                hashMap.put("amount",1);
-                hashMap.put("category",category);
-                hashMap.put("imageURL",imageURL);
-                final DatabaseReference cartRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart");
-                cartRefs.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        cartRefs.child(dataSnapshot.getChildrenCount()+"").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
-                            @Override
-                            public void onComplete(@NonNull Task task) {
-                                dialog.cancel();
-                                CartFragment cartFragment = new CartFragment();
-                                setFragment(cartFragment);
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                dialog.cancel();
+                CartFragment cartFragment = new CartFragment();
+                setFragment(cartFragment);
             }
         });
 
@@ -263,10 +326,35 @@ public class BuyDetailFragment extends Fragment {
         dialog.show();
     }
 
+    private void initializeDialogFailed(){
+        android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(getActivity(),R.style.CustomAlertDialog);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_add_cart_failed,null);
+        dialogView.setBackgroundColor(Color.TRANSPARENT);
+        dialog.setView(dialogView);
+        dialog.setCancelable(false);
+        dialog.setTitle(null);
+
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(final DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+    }
+
     private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment
     {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
+        CartFragment cartFragment = new CartFragment();
+        fragmentTransaction.replace(R.id.frameFragment,cartFragment);
+        fragmentTransaction.replace(R.id.frameFragment,fragment);
         fragmentTransaction.commit();
     }
 

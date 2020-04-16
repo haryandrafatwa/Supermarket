@@ -45,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         final CartModel model = mList.get(i);
 
         viewHolder.tv_nama_produk.setText(model.getNama_produk());
-        viewHolder.tv_price.setText("$"+model.getPrice());
+        viewHolder.tv_price.setText("$"+model.getTotalPrice());
     }
 
     private void setFragment(Fragment fragment) {

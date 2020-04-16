@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_cart"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorAccent"
+        android:theme="@style/ToolbarThemeGreen">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sf_pro_display_regular"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/seekbar"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_cart"
+        android:layout_marginVertical="4dp">
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bg_seek"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_circle_on"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_circle_off"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bg_circle_off"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/seekbar"
+        android:layout_below="@id/toolbar_cart"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_edittext_dark"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spin_method"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_gravity="center"/>
+
+            <EditText
+                android:id="@+id/et_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:inputType="text"
+                android:textColor="@color/colorInputText"
+                android:textSize="14sp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/sf_pro_display_regular"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount payable on delivery:"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/method"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You can also pay using credit card or debit card at the time of delivery"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/payment"/>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:background="@drawable/bg_btn"
+            android:textAllCaps="false"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -53,7 +53,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         viewHolder.tv_harga.setText("$"+model.getHarga());
 
         float rating = model.getRating();
-        float num = Float.intBitsToFloat(model.getNumOfRating());
+        float num = (float) model.getNumOfRating();
         final float mean = (rating/num);
 
         viewHolder.ratingBar.setRating(mean);

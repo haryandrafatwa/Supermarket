@@ -3,9 +3,9 @@ package com.example.supermarket;
 public class CartModel {
 
     private String id_cart, id_produk, nama_produk, category, imageURL;
-    private int amount, price;
+    private int amount, price,totalPrice;
 
-    public CartModel(String id_cart, String id_produk, String nama_produk, String category, String imageURL, int amount, int price) {
+    public CartModel(String id_cart, String id_produk, String nama_produk, String category, String imageURL, int amount, int price, int totalPrice) {
         this.id_cart = id_cart;
         this.id_produk = id_produk;
         this.nama_produk = nama_produk;
@@ -13,6 +13,7 @@ public class CartModel {
         this.imageURL = imageURL;
         this.amount = amount;
         this.price = price;
+        this.totalPrice = totalPrice;
     }
 
     public String getImageURL() {
@@ -69,5 +70,13 @@ public class CartModel {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

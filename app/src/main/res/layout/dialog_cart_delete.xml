@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/ic_cart_delete"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmation"
+            android:layout_below="@id/image"
+            android:layout_centerHorizontal="true"
+            android:textSize="28sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/sf_pro_display_semibold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you sure want to delete this item?"
+            android:layout_below="@id/success"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/sf_pro_display_medium"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
