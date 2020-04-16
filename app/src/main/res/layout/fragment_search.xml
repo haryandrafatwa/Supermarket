@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorAccent"
+            android:theme="@style/ToolbarThemeGreen">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/et_search_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_btn_solid_white"
+                    android:layout_marginVertical="8dp"
+                    android:hint="Search"
+                    android:textSize="14sp"
+                    android:inputType="text"
+                    android:paddingLeft="16dp"
+                    android:textColor="@android:color/black"
+                    android:layout_toLeftOf="@id/ib_notification_buy"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"/>
+
+                <ImageButton
+                    android:id="@+id/ib_search_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_search"
+                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:layout_alignEnd="@id/et_search_buy"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"/>
+
+                <ImageButton
+                    android:id="@+id/ib_notification_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_notifications"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@android:color/white"
+                    android:layout_marginRight="16dp"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_search"
+            android:padding="16dp"
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:id="@+id/layout_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/recent_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Search"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/sf_pro_display_regular"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_recent_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recent_search"
+                    android:layout_marginTop="8dp"
+                    tools:listitem="@layout/item_kategori"
+                    tools:itemCount="2"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_recent"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/filter_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter:"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/sf_pro_display_regular"/>
+
+                <RelativeLayout
+                    android:id="@+id/category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/filter_search">
+
+                    <TextView
+                        android:id="@+id/category_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category:"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:layout_marginTop="8dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/category_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/category_search"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/electronic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Electronic"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/furniture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Furniture"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/electronic"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/vegetable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Vegetable"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/furniture"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/fruit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Fruit"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/vegetable"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/snack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Snack"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/fruit"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/category_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/category_1"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/beverage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Beverage"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/appliance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Appliance"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/beverage"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/sport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Sport"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/appliance"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/category">
+
+                    <TextView
+                        android:id="@+id/condition_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Condition:"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:layout_marginTop="8dp"/>
+
+                    <RelativeLayout
+                        android:id="@+id/condition_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/condition_search"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/newCondition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="New"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/used"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="50dp"
+                            android:text="Preloved"
+                            android:padding="6dp"
+                            android:textSize="8sp"
+                            android:background="@drawable/bg_filter_off"
+                            android:textColor="@android:color/black"
+                            android:layout_toRightOf="@id/newCondition"
+                            android:layout_marginLeft="8dp"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/condition">
+
+                    <TextView
+                        android:id="@+id/range_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Range:"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/sf_pro_display_regular"
+                        android:layout_marginTop="8dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/range_search">
+
+                        <TextView
+                            android:id="@+id/minimum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Minimum Price"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:id="@+id/maximum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maximum Price"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="8dp"/>
+
+                        <EditText
+                            android:id="@+id/et_minimum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="62dp"
+                            android:gravity="center"
+                            android:hint="-"
+                            android:inputType="number"
+                            android:textSize="10sp"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:background="@drawable/bg_edittext"
+                            android:padding="4dp"
+                            android:layout_below="@id/maximum"/>
+
+                        <EditText
+                            android:id="@+id/et_maximum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:minWidth="62dp"
+                            android:gravity="center"
+                            android:hint="-"
+                            android:textSize="10sp"
+                            android:inputType="number"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:background="@drawable/bg_edittext"
+                            android:padding="4dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_below="@id/maximum"/>
+
+                        <it.sephiroth.android.library.rangeseekbar.RangeSeekBar
+                            android:id="@+id/rs_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Base.Sephiroth.Widget.RangeSeekBar"
+                            android:layout_below="@id/et_minimum"
+                            android:layout_marginTop="8dp"/>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

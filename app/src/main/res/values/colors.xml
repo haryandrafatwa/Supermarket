@@ -8,4 +8,6 @@
     <color name="colorText">#416188</color>
     <color name="colorButton">#8BC34A</color>
     <color name="colorMenuBackground">#689F38</color>
+    <color name="yellowRating">#E6AC00</color>
+    <color name="colorOrange">#FF5722</color>
 </resources>

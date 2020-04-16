@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="4dp"
+    app:cardPreventCornerOverlap="false">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layout_image"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:id="@+id/iv_produk_sell_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--<ImageView
+            android:id="@+id/iv_produk_sell_item"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_logo"/>-->
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_image"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_produk_sell_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Standing Speaker"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_produk_sell_item_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_produk_sell_item_name"
+                android:text="In stock: 9"
+                android:fontFamily="@font/sf_pro_display_regular"/>
+
+            <TextView
+                android:id="@+id/tv_produk_sell_item_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_produk_sell_item_stock"
+                android:text="$52"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_marginTop="16dp"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_produk_sell_item_harga">
+
+                <RatingBar
+                    android:id="@+id/rb_rating_produk_sell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="12"
+                    style="?android:ratingBarStyleSmall"
+                    android:rating="4"
+                    android:progressTint="@color/yellowRating"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/tv_produk_sell_item_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/rb_rating_produk_sell"
+                    android:text="4.0"
+                    android:fontFamily="@font/sf_pro_display_regular"
+                    android:layout_marginLeft="6dp"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

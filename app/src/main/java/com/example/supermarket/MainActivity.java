@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public static Context contextOfApplication;
     private DatabaseReference databaseReference;
 
+    private String search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,5 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
     public static Context getContextOfApplication() {
         return contextOfApplication;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getSearch() {
+        return search;
     }
 }

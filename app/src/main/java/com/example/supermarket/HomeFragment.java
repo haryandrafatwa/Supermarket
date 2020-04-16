@@ -110,11 +110,27 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        add_balance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EnterAmountFragment enterAmountFragment = new EnterAmountFragment();
+                setFragment(enterAmountFragment);
+            }
+        });
+
         sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SellFragment sellFragment = new SellFragment();
                 setFragment(sellFragment);
+            }
+        });
+
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuyFragment buyFragment = new BuyFragment();
+                setFragment(buyFragment);
             }
         });
     }

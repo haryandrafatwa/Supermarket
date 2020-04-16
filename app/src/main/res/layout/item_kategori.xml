@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:backgroundTint="@color/colorBorder">
+
+    <TextView
+        android:id="@+id/tv_item_kategori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bluetooth Speaker"
+        android:padding="4dp"
+        android:fontFamily="@font/sf_pro_display_medium"
+        android:textColor="@android:color/black"/>
+
+    <ImageButton
+        android:id="@+id/ib_delete_recent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_highlight_off"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="4dp"/>
+
+</RelativeLayout>

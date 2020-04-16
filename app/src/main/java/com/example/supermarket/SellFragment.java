@@ -75,12 +75,12 @@ public class SellFragment extends Fragment {
     private static final int GALLERY = 1;
     private static final int CAMERAA = 2;
     private static final String APP_TAG = "Supermarket";
-    private String idProduct;
+    private String idProduct, uid, by;
     private String photoFileName = "ic_user.png";
     private Uri filePath;
     private File finalFile;
 
-    private DatabaseReference produkRefs;
+    private DatabaseReference produkRefs,userRefs;
     private StorageReference imageRefs;
 
     private Toolbar toolbar;
@@ -251,7 +251,22 @@ public class SellFragment extends Fragment {
             }
         });
 
-        produkRefs = FirebaseDatabase.getInstance().getReference().child("Product").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        produkRefs = FirebaseDatabase.getInstance().getReference().child("Product");
+        userRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        userRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                uid = dataSnapshot.getKey();
+                by = dataSnapshot.child("name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         imageRefs = FirebaseStorage.getInstance().getReference().child("Product").child("ProductImage").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -276,9 +291,14 @@ public class SellFragment extends Fragment {
                                 produkMap.put("kategori",et_kategori.getText().toString());
                                 produkMap.put("alamat",et_alamat.getText().toString());
                                 produkMap.put("kondisi",et_kondisi.getText().toString());
-                                produkMap.put("stok",et_stok.getText().toString());
+                                produkMap.put("deskripsi",et_deskripsi.getText().toString());
+                                produkMap.put("stok",Integer.valueOf(et_stok.getText().toString()));
                                 produkMap.put("harga",Integer.valueOf(clean));
+                                produkMap.put("rating",0);
                                 produkMap.put("imageURL","-");
+                                produkMap.put("by",by);
+                                produkMap.put("uid",uid);
+                                produkMap.put("numOfRating",0);
                                 idProduct = String.valueOf(dataSnapshot.getChildrenCount());
                                 produkRefs.child(idProduct).updateChildren(produkMap).addOnCompleteListener(new OnCompleteListener() {
                                     @Override
