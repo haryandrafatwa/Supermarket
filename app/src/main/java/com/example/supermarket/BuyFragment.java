@@ -23,11 +23,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,25 +48,26 @@ public class BuyFragment extends Fragment {
     private TextView et_search;
     private ImageButton ib_search, ib_notif;
     private RelativeLayout rl_filter;
-    private RecyclerView rv_kategori, rv_item;
     private TextView tv_item_empty;
     private ProgressBar pb_item;
     private Toolbar toolbar;
+    private NotificationBadge mBadge;
 
     private ArrayList<String> listKategori = new ArrayList<>();
     private ArrayList<ItemModel> mList = new ArrayList<>();
     private ArrayList<ItemModel> reverse = new ArrayList<>();
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter adapter;
+    private RecyclerView rv_kategori, rv_item;
 
     private RecyclerView.LayoutManager mLayoutManagerK;
     private RecyclerView.Adapter adapterK;
 
-    private DatabaseReference productRefs;
+    private DatabaseReference productRefs, notifRefs;
 
     private String searchText;
     private List<String> categoryArray,conditionArray;
-    private int min,max;
+    private int min,max,counter;
 
     private RelativeLayout buy;
 
@@ -108,8 +111,31 @@ public class BuyFragment extends Fragment {
         rv_kategori = getActivity().findViewById(R.id.rv_kategori_buy);
         tv_item_empty = getActivity().findViewById(R.id.tv_item_empty);
         pb_item = getActivity().findViewById(R.id.pb_item);
+        mBadge = getActivity().findViewById(R.id.notif_badge);
 
         initRecyclerViewItem();
+
+        notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
+
+        notifRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount()!=0){
+                    counter=0;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        if (!snapshot.hasChild("read")){
+                            counter+=1;
+                        }
+                    }
+                    mBadge.setNumber(counter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         recyclerViewReadyCallback = new RecyclerViewReadyCallback() {
             @Override
@@ -366,20 +392,8 @@ public class BuyFragment extends Fragment {
     }
 
     private void filterCategory(){
-        listKategori.clear();
         for (int i = 0; i < categoryArray.size(); i++) {
             reverse.clear();
-            listKategori.add(categoryArray.get(i));
-            adapterK.notifyDataSetChanged();
-            rv_kategori.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    if(recyclerViewReadyCallback != null){
-                        recyclerViewReadyCallback.onLayoutReady();
-                    }
-                    rv_kategori.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
-            });
             productRefs.orderByChild("kategori").equalTo(categoryArray.get(i)).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

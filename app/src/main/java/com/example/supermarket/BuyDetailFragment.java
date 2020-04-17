@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -61,7 +62,9 @@ public class BuyDetailFragment extends Fragment {
     private int price, numOfRating, stock;
     private float rating;
 
-    private DatabaseReference sellerRefs;
+    private DatabaseReference sellerRefs,notifRefs;
+    private int counter;
+    private NotificationBadge mBadge;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -108,6 +111,7 @@ public class BuyDetailFragment extends Fragment {
         tv_condition = getActivity().findViewById(R.id.tv_condition_product);
         ib_chat = getActivity().findViewById(R.id.ib_chat);
         tv_chat = getActivity().findViewById(R.id.tvchat);
+        mBadge = getActivity().findViewById(R.id.notif_badge);
 
         sellerRefs = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
         sellerRefs.addValueEventListener(new ValueEventListener() {
@@ -152,6 +156,29 @@ public class BuyDetailFragment extends Fragment {
             public void onClick(View v) {
                 SearchBarFragment searchBarFragment =new SearchBarFragment();
                 setFragment(searchBarFragment);
+            }
+        });
+
+        notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
+
+        notifRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount()!=0){
+                    counter=0;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        if (!snapshot.hasChild("read")){
+                            counter+=1;
+                        }
+                    }
+                    mBadge.setNumber(counter);
+                    Toast.makeText(getActivity(), counter+"", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 

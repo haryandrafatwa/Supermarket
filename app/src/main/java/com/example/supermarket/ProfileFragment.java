@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -33,7 +35,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
-    private DatabaseReference userRefs;
+    private DatabaseReference userRefs,notifRefs;
+    private int counter;
+    private NotificationBadge mBadge;
 
     private TextView tv_profile, tv_name, tv_balance, tv_email;
     private Button btnLogout;
@@ -70,6 +74,7 @@ public class ProfileFragment extends Fragment {
         imageView = getActivity().findViewById(R.id.iv_akun_picture);
         progressBar = getActivity().findViewById(R.id.pb_akun);
         btnLogout = getActivity().findViewById(R.id.btn_logout);
+        mBadge = getActivity().findViewById(R.id.notif_badge);
 
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +117,30 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+        notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
+
+        notifRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildrenCount()!=0){
+                    counter=0;
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        if (!snapshot.hasChild("read")){
+                            counter+=1;
+                        }
+                    }
+                    mBadge.setNumber(counter);
+                    Toast.makeText(getActivity(), counter+"", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void alertsignout(){ // fungsi untuk membuat alert dialog ketika ingin logout

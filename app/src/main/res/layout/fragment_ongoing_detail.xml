@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_ongoing"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorAccent"
+        android:theme="@style/ToolbarThemeGreen">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ongoing Order"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sf_pro_display_regular"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
+        android:layout_below="@id/toolbar_ongoing">
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order No. 01"
+            android:textSize="20sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textColor="@color/colorOrange"/>
+
+        <TextView
+            android:id="@+id/tv_item_name_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haryandra Fatwa"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/tv_item_name"/>
+
+        <TextView
+            android:id="@+id/tv_item_payMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_name_bill"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="Cash on Delivery"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_item_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jl. Batu jambrut"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_below="@id/tv_item_payMethod"/>
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="31 Desember 2020"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/separtor_bawah"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/content"
+        android:background="@color/colorBorder"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_ongoing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/separtor_bawah"
+        android:layout_marginBottom="64dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_produk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="250dp"
+            android:paddingBottom="16dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_ongoing_detail"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_marginTop="8dp"
+                tools:itemCount="0"/>
+
+            <ProgressBar
+                android:id="@+id/pb_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_menu_beranda_green_atas"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/btnComplete"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:text="Complete Order"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_btn_solid_orange"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textSize="18sp"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="wrap_content"
+            android:text="Cancel Order"
+            android:textAllCaps="false"
+            android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="16dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

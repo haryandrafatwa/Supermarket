@@ -90,7 +90,7 @@ public class PaymentMethodFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new PaymentBillFragment(totalPayment));
+                setFragment(new PaymentBillFragment(totalPayment,editText.getText().toString()));
             }
         });
 

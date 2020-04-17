@@ -31,7 +31,7 @@
                     android:paddingLeft="16dp"
                     android:gravity="start|center_vertical"
                     android:textColor="@android:color/black"
-                    android:layout_toLeftOf="@id/ib_notification_buy"
+                    android:layout_toLeftOf="@id/layout_notif"
                     android:layout_centerVertical="true"
                     android:clickable="true"
                     android:layout_marginRight="16dp">
@@ -44,19 +44,39 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_search"
                     android:backgroundTint="@color/colorPrimaryDark"
-                    android:layout_toLeftOf="@id/ib_notification_buy"
+                    android:layout_toLeftOf="@id/layout_notif"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="32dp"/>
 
-                <ImageButton
-                    android:id="@+id/ib_notification_buy"
+                <RelativeLayout
+                    android:id="@+id/layout_notif"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_notifications"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="16dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:backgroundTint="@android:color/white"
-                    android:layout_marginRight="16dp"/>
+                    android:layout_centerVertical="true">
+
+                    <ImageButton
+                        android:id="@+id/ib_notification_buy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_notifications"
+                        android:backgroundTint="@android:color/white"/>
+
+                    <com.nex3z.notificationbadge.NotificationBadge
+                        android:id="@+id/notif_badge"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_toRightOf="@id/ib_notification_buy"
+                        android:layout_alignTop="@id/ib_notification_buy"
+                        android:layout_marginLeft="-16dp"
+                        android:layout_marginTop="-3dp"
+                        app:badgeTextSize="10sp"
+                        app:badgeBackground="@drawable/bg_badge"
+                        app:maxTextLength="2"/>
+
+                </RelativeLayout>
 
             </RelativeLayout>
 

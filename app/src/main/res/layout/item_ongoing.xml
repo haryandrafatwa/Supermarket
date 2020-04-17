@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order No. 01"
+            android:textSize="20sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textColor="@color/colorOrange"/>
+
+        <TextView
+            android:id="@+id/tv_item_name_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haryandra Fatwa"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_marginTop="8dp"
+            android:layout_below="@id/tv_item_name"/>
+
+        <TextView
+            android:id="@+id/tv_item_payMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_name_bill"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:text="Cash on Delivery"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_item_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jl. Batu jambrut"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_below="@id/tv_item_payMethod"/>
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="31 Desember 2020"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/separtor_bawah"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/content"
+        android:background="@color/colorBorder"/>
+
+</RelativeLayout>

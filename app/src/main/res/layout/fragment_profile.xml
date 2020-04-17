@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white">
 
 
@@ -84,24 +86,43 @@
         android:background="@drawable/separator"
         android:layout_below="@id/profile"/>
 
-    <TextView
-        android:id="@+id/notification"
+    <RelativeLayout
+        android:id="@+id/layout_notif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notification"
-        android:layout_below="@id/separator_1"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="@font/sf_pro_display_medium"
-        android:paddingVertical="8dp"
-        android:paddingLeft="32dp"/>
+        android:layout_below="@id/separator_1">
+
+        <TextView
+            android:id="@+id/notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification"
+            android:layout_toLeftOf="@id/notif_badge"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:paddingVertical="8dp"
+            android:paddingLeft="32dp"/>
+
+        <com.nex3z.notificationbadge.NotificationBadge
+            android:id="@+id/notif_badge"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:badgeTextSize="18sp"
+            app:badgeBackground="@drawable/bg_badge"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="32dp"
+            app:maxTextLength="2"/>
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/separator_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@drawable/separator"
-        android:layout_below="@id/notification"/>
+        android:layout_below="@id/layout_notif"/>
 
     <TextView
         android:id="@+id/termcondition"

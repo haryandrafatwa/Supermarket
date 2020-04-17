@@ -296,6 +296,7 @@ public class SellFragment extends Fragment {
                                 produkMap.put("harga",Integer.valueOf(clean));
                                 produkMap.put("rating",0);
                                 produkMap.put("imageURL","-");
+                                produkMap.put("report",0);
                                 produkMap.put("by",by);
                                 produkMap.put("uid",uid);
                                 produkMap.put("numOfRating",0);

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,7 +40,7 @@ public class PaymentBillFragment extends Fragment {
     private EditText et_name, et_username, et_address, et_city, et_phone;
     private Button button;
 
-    private String totalPayment;
+    private String totalPayment, payMethod;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,7 +79,24 @@ public class PaymentBillFragment extends Fragment {
                 if (!TextUtils.isEmpty(et_name.getText().toString()) && !TextUtils.isEmpty(et_username.getText().toString())  && !TextUtils.isEmpty(et_address.getText().toString())
                         && !TextUtils.isEmpty(et_city.getText().toString()) && !TextUtils.isEmpty(et_phone.getText().toString())){
                     alertFillData();
+                }else{
+                    Toast.makeText(getActivity(), "Please fill out your information first", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        DatabaseReference userRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        userRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                et_name.setText(dataSnapshot.child("name").getValue().toString());
+                et_username.setText(dataSnapshot.child("username").getValue().toString());
+                et_phone.setText(dataSnapshot.child("phonenumber").getValue().toString().substring(1, dataSnapshot.child("phonenumber").getValue().toString().length()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
@@ -111,6 +129,9 @@ public class PaymentBillFragment extends Fragment {
                         hashMap.put("city",et_city.getText().toString());
                         hashMap.put("phoneNumber",et_phone.getText().toString());
                         hashMap.put("totalPayment",totalPayment);
+                        hashMap.put("payMethod",payMethod);
+                        hashMap.put("status","Active");
+                        hashMap.put("report",false);
 
                         Date c = Calendar.getInstance().getTime();
                         Locale local = new Locale("id", "ID");
@@ -129,7 +150,7 @@ public class PaymentBillFragment extends Fragment {
                 });
 
                 final DatabaseReference cartRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Cart");
-                DatabaseReference onGoingRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("OnGoing");
+                DatabaseReference onGoingRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Order");
                 onGoingRefs.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
@@ -186,7 +207,8 @@ public class PaymentBillFragment extends Fragment {
         });
     }
 
-    public PaymentBillFragment(String totalPayment) {
+    public PaymentBillFragment(String totalPayment, String payMethod) {
         this.totalPayment = totalPayment;
+        this.payMethod = payMethod;
     }
 }
