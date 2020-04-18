@@ -172,7 +172,6 @@ public class BuyDetailFragment extends Fragment {
                         }
                     }
                     mBadge.setNumber(counter);
-                    Toast.makeText(getActivity(), counter+"", Toast.LENGTH_SHORT).show();
                 }
             }
 
