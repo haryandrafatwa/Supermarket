@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tv_item_name_bill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have ordered"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order No. 01"
+            android:textSize="20sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:textColor="@color/colorOrange"
+            android:layout_below="@id/tv_item_name_bill"/>
+
+        <ImageButton
+            android:id="@+id/ib_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_clear"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/tv_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="31 Desember 2020"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_display_medium"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/separtor_bawah"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/content"
+        android:background="@color/colorBorder"/>
+
+</RelativeLayout>

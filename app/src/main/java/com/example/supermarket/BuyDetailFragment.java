@@ -113,6 +113,13 @@ public class BuyDetailFragment extends Fragment {
         tv_chat = getActivity().findViewById(R.id.tvchat);
         mBadge = getActivity().findViewById(R.id.notif_badge);
 
+        ib_notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragmentNotif(new NotifikasiFragment());
+            }
+        });
+
         sellerRefs = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
         sellerRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -369,6 +376,13 @@ public class BuyDetailFragment extends Fragment {
         });
 
         dialog.show();
+    }
+
+    private void setFragmentNotif(Fragment fragment) // fungsi buat pindah - pindah fragment
+    {
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment

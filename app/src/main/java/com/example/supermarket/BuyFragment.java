@@ -113,6 +113,13 @@ public class BuyFragment extends Fragment {
         pb_item = getActivity().findViewById(R.id.pb_item);
         mBadge = getActivity().findViewById(R.id.notif_badge);
 
+        ib_notif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new NotifikasiFragment());
+            }
+        });
+
         initRecyclerViewItem();
 
         notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");

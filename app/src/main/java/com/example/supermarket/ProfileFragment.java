@@ -39,7 +39,7 @@ public class ProfileFragment extends Fragment {
     private int counter;
     private NotificationBadge mBadge;
 
-    private TextView tv_profile, tv_name, tv_balance, tv_email;
+    private TextView tv_profile, tv_name, tv_balance, tv_email, tv_notifikasi;
     private Button btnLogout;
     private CircleImageView imageView;
     private ProgressBar progressBar;
@@ -75,12 +75,20 @@ public class ProfileFragment extends Fragment {
         progressBar = getActivity().findViewById(R.id.pb_akun);
         btnLogout = getActivity().findViewById(R.id.btn_logout);
         mBadge = getActivity().findViewById(R.id.notif_badge);
+        tv_notifikasi = getActivity().findViewById(R.id.notification);
 
         tv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DetailProfileDragment detailProfileDragment = new DetailProfileDragment();
                 setFragment(detailProfileDragment);
+            }
+        });
+
+        tv_notifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new NotifikasiFragment());
             }
         });
 
