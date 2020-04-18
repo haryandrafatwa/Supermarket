@@ -104,8 +104,8 @@ public class HistoryFragment extends Fragment {
                             });
                         }else{
                             status = false;
-                            progressBar.setVisibility(View.GONE);
-                            tv_item_empty.setVisibility(View.VISIBLE);
+//                            progressBar.setVisibility(View.GONE);
+//                            tv_item_empty.setVisibility(View.VISIBLE);
                             rv_item.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                                 @Override
                                 public void onGlobalLayout() {
@@ -119,8 +119,6 @@ public class HistoryFragment extends Fragment {
                     }
                 }else{
                     status=false;
-                    progressBar.setVisibility(View.GONE);
-                    tv_item_empty.setVisibility(View.VISIBLE);
                     tv_item_empty.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
