@@ -105,6 +105,8 @@ public class OngoingFragment extends Fragment {
                                 }
                             });
                         }else{
+                            tv_item_empty.setVisibility(View.VISIBLE);
+                            progressBar.setVisibility(View.GONE);
                             status=false;
                             rv_item.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                                 @Override
@@ -118,6 +120,8 @@ public class OngoingFragment extends Fragment {
                         }
                     }
                 }else{
+                    tv_item_empty.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                     status=false;
                     progressBar.setVisibility(View.GONE);
                 }

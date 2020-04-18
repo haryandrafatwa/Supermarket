@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -65,13 +66,20 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
                             setFragment(historyDetailFragment);
                         }
                     });
-                }else{
+                }else if (dataSnapshot.child("status").getValue().toString().equalsIgnoreCase("active")){
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             OngoingDetailFragment ongoingDetailFragment = new OngoingDetailFragment();
                             ongoingDetailFragment.setOngoingModel(model);
                             setFragment(ongoingDetailFragment);
+                        }
+                    });
+                }else{
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(mActivity, "Your order has been canceled!", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

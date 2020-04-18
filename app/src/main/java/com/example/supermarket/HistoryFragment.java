@@ -87,6 +87,7 @@ public class HistoryFragment extends Fragment {
                     for (DataSnapshot dats:dataSnapshot.getChildren()){
                         if (dats.child("status").getValue().toString().equalsIgnoreCase("done")){
                             status = true;
+                            tv_item_empty.setVisibility(View.GONE);
                             mList.add(new OngoingModel(dats.getKey(),dats.child("date").getValue().toString(),dats.child("name").getValue().toString(),
                                     dats.child("payMethod").getValue().toString(),dats.child("address").getValue().toString()));
 
@@ -103,6 +104,8 @@ public class HistoryFragment extends Fragment {
                             });
                         }else{
                             status = false;
+                            progressBar.setVisibility(View.GONE);
+                            tv_item_empty.setVisibility(View.VISIBLE);
                             rv_item.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                                 @Override
                                 public void onGlobalLayout() {
@@ -116,6 +119,8 @@ public class HistoryFragment extends Fragment {
                     }
                 }else{
                     status=false;
+                    progressBar.setVisibility(View.GONE);
+                    tv_item_empty.setVisibility(View.VISIBLE);
                     tv_item_empty.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                 }
