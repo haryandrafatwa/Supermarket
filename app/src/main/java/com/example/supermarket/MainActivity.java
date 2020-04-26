@@ -8,10 +8,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.supermarket.Cart.CartFragment;
+import com.example.supermarket.History.HistoryFragment;
+import com.example.supermarket.Home.HomeFragment;
+import com.example.supermarket.Ongoing.OngoingFragment;
+import com.example.supermarket.Profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

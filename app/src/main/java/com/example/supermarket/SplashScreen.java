@@ -6,6 +6,8 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.supermarket.Auth.LoginActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     private int waktu_loading=1;
@@ -19,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
 
                 //setelah loading maka akan langsung berpindah ke home activity
-                Intent home=new Intent(SplashScreen.this,LoginActivity.class);
+                Intent home=new Intent(SplashScreen.this, LoginActivity.class);
                 startActivity(home);
                 finish();
 
