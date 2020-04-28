@@ -258,6 +258,7 @@ public class SearchBarFragment extends Fragment {
             }
         });
 
+        //proses buat pas seekbar digerakin, input text juga berubah
         rangeSeekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener() {
             @Override
             public void onProgressChanged(final RangeSeekBar seekBar, final int progressStart, final int progressEnd, final boolean fromUser) {
@@ -274,6 +275,7 @@ public class SearchBarFragment extends Fragment {
             public void onStopTrackingTouch(final RangeSeekBar seekBar) { }
         });
 
+        //method buat ngubah format input text jadi format USD
         et_maximum.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -325,6 +327,7 @@ public class SearchBarFragment extends Fragment {
             }
         });
 
+        //method buat ngubah format input text jadi format USD
         et_minimum.addTextChangedListener(new TextWatcher() {
 
             @Override

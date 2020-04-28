@@ -16,18 +16,21 @@ import com.example.supermarket.R;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter berfungsi utk menampilkan item-item pada recycler view
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     private List<CartModel> mList = new ArrayList<>();
     private Context mContext;
     private FragmentActivity mActivity;
 
+    //adapter konstruktor
     public CartAdapter(List<CartModel> mList, Context mContext, FragmentActivity mActivity) {
         this.mList = mList;
         this.mContext = mContext;
         this.mActivity = mActivity;
     }
 
+    //method utk menentukan layout mana yg akan dijadikan layout item pada recycler view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
@@ -37,6 +40,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         return viewHolder;
     }
 
+    //method utk mengassign objek2 sesuai dengan model item
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final int position = i;
@@ -46,17 +50,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         viewHolder.tv_price.setText("$"+model.getTotalPrice());
     }
 
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = mActivity.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
     @Override
     public int getItemCount() {
         return mList.size();
     }
 
+    //class utk menampung objek2 yang ada pada halaman item list recycler view
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_nama_produk, tv_price;

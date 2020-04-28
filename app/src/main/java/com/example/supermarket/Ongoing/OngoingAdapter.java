@@ -16,18 +16,21 @@ import com.example.supermarket.R;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter berfungsi utk menampilkan item-item pada recycler view
 public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHolder> {
 
     private List<OngoingModel> mList = new ArrayList<>();
     private Context mContext;
     private FragmentActivity mActivity;
 
+    //adapter konstruktor
     public OngoingAdapter(List<OngoingModel> mList, Context mContext, FragmentActivity mActivity) {
         this.mList = mList;
         this.mContext = mContext;
         this.mActivity = mActivity;
     }
 
+    //method utk menentukan layout mana yg akan dijadikan layout item pada recycler view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
@@ -37,6 +40,7 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
         return viewHolder;
     }
 
+    //method utk mengassign objek2 sesuai dengan model item
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final int position = i;
@@ -58,6 +62,7 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
         });
     }
 
+    //fungsi buat pindah - pindah fragment
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = mActivity.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
@@ -69,6 +74,7 @@ public class OngoingAdapter extends RecyclerView.Adapter<OngoingAdapter.ViewHold
         return mList.size();
     }
 
+    //class utk menampung objek2 yang ada pada halaman item list recycler view
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_nama_ongoing, tv_nama, tv_paymethod, tv_address,tv_date;

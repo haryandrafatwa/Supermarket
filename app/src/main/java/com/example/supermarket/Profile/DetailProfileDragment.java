@@ -116,6 +116,7 @@ public class DetailProfileDragment extends Fragment{
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
         toolbar = getActivity().findViewById(R.id.toolbar_profile);
         setToolbar();
@@ -275,7 +276,7 @@ public class DetailProfileDragment extends Fragment{
 
         userRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         imageRefs = FirebaseStorage.getInstance().getReference().child("DisplayPictures").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("ic_user.png");
-
+        //proses mengambil data user dari firebase database
         userRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -311,29 +312,7 @@ public class DetailProfileDragment extends Fragment{
 
     }
 
-    /*private void showPictureDialog(){
-        AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());
-        pictureDialog.setTitle("Select Action");
-        String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera" };
-        pictureDialog.setItems(pictureDialogItems,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                choosePhotoFromGallery();
-                                break;
-                            case 1:
-                                dispatchTakePictureIntent();
-                                break;
-                        }
-                    }
-                });
-        pictureDialog.show();
-    }*/
-
+    //method utk menampilkan pesan dialog ketika ingin mengubah foto profile
     private void showPictureDialog(){
         final Dialog dialog1 = new Dialog(getActivity(),R.style.CustomAlertDialog);
         dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -363,6 +342,7 @@ public class DetailProfileDragment extends Fragment{
         dialog1.show();
     }
 
+    //proses pengupdatean data dari firebase database
     private void updateData() {
 
         if (filePath != null){
@@ -391,6 +371,7 @@ public class DetailProfileDragment extends Fragment{
 
     }
 
+    //proses upload image baru ke firebase storage dan juga mengambil link download dan disimpan ke firebase database
     private void uploadImage(){
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Uploading...");
@@ -427,6 +408,7 @@ public class DetailProfileDragment extends Fragment{
                 });
     }
 
+    //method utk menampilkan pesan dialog utk validasi akan melakukan update
     private void initializeDialogUpdated(){
         android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(getActivity(),R.style.CustomAlertDialog);
         LayoutInflater inflater = getLayoutInflater();
@@ -446,6 +428,7 @@ public class DetailProfileDragment extends Fragment{
         dialog.show();
     }
 
+    //method utk menampilkan alert ketika menekan tombol back jika sudah ada perubahan
     public void alertOnBackPressed(){
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(getActivity());
 
@@ -486,6 +469,7 @@ public class DetailProfileDragment extends Fragment{
         fragmentTransaction.commit();
     }
 
+    //method utk mengecek apakah device telah memberikan permission utk aplikasi menggunakan camera atau tidak, jika sudah ada, maka akan dikirimkan ke halaman camera
     private void dispatchTakePictureIntent() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
@@ -501,6 +485,7 @@ public class DetailProfileDragment extends Fragment{
 
     }
 
+    //method utk mengolah hasil pilihan foto, dan ditampilkan ke circle image view yang ada pada halaman
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -530,6 +515,7 @@ public class DetailProfileDragment extends Fragment{
         }
     }
 
+    //method utk melakukan konversi dari abstract path menjadi absolute path
     public File getPhotoFileUri(String fileName) {
         File mediaStorageDir = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES), APP_TAG);
 
@@ -542,6 +528,7 @@ public class DetailProfileDragment extends Fragment{
         return file;
     }
 
+    //method utk menampilkan galeri foto user
     private void choosePhotoFromGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -549,6 +536,7 @@ public class DetailProfileDragment extends Fragment{
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY);
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");

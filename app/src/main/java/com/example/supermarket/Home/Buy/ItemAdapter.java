@@ -91,6 +91,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     }
 
+    //fungsi buat pindah - pindah fragment
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = mActivity.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);

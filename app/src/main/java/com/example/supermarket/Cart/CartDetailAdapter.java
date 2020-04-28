@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter berfungsi utk menampilkan item-item pada recycler view
 public class CartDetailAdapter extends RecyclerView.Adapter<CartDetailAdapter.ViewHolder> {
 
     private List<CartModel> mList = new ArrayList<>();

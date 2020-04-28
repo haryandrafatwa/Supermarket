@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
         bottomNavigationView.setVisibility(View.VISIBLE);
@@ -98,6 +99,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //proses pengambilan data user dari firebase dan ditampilkan ke halaman
         userRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(final DataSnapshot dataSnapshot) {
@@ -125,8 +127,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //proses mengambil data user berupa notif, jika ada notif yg berstatus belum dibaca, maka akan dilakukan perhitungan dan ditampilkan ke halaman
         notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
-
         notifRefs.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -185,6 +187,7 @@ public class ProfileFragment extends Fragment {
         getActivity().finish();
     }
 
+    // fungsi buat pindah - pindah fragment
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);

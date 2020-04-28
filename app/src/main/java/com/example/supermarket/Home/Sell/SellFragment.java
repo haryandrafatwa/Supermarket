@@ -219,10 +219,12 @@ public class SellFragment extends Fragment {
             }
         });
 
+        //konten utk dropdown kondisi barang
         String[] entriesKondisi = new String[]{
                 "Kondisi barang", "New", "Preloved"
         };
 
+        //proses pengassignan konten dropdown kedalam dropdown adapter
         ArrayAdapter<String> spinnerAdapterKondisi = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, entriesKondisi);
         spinnerAdapterKondisi.setDropDownViewResource(R.layout.spinner_item);
         kondisi.setAdapter(spinnerAdapterKondisi);
@@ -527,7 +529,7 @@ public class SellFragment extends Fragment {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), GALLERY);
     }
 
-    private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment
+                                                                                                                                                            private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment
     {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {

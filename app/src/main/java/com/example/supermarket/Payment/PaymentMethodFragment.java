@@ -51,6 +51,7 @@ public class PaymentMethodFragment extends Fragment {
         initialize();
     }
 
+    //menginisiasi semua objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -67,10 +68,12 @@ public class PaymentMethodFragment extends Fragment {
             textView.setText("Amount payable on delivery: "+totalPayment);
         }
 
+        //konten utk dropdown kondisi barang
         String[] entriesKategori = new String[]{
                 "Cash on Delivery"
         };
 
+        //proses pengassignan konten dropdown kedalam dropdown adapter
         ArrayAdapter<String> spinnerAdapterKategori = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, entriesKategori);
         spinnerAdapterKategori.setDropDownViewResource(R.layout.spinner_item);
         spinner.setAdapter(spinnerAdapterKategori);
@@ -96,6 +99,7 @@ public class PaymentMethodFragment extends Fragment {
 
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");

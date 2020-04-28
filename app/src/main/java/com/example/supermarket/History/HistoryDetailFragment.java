@@ -71,6 +71,7 @@ public class HistoryDetailFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -100,6 +101,7 @@ public class HistoryDetailFragment extends Fragment {
         tv_payMethod.setText(ongoingModel.getPayMethod());
         tv_address.setText(ongoingModel.getAddress());
 
+        //mengambil data ongoing pada user tsb dari firebase database
         ongoingRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Order").child(ongoingModel.getId());
         ongoingRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -138,6 +140,7 @@ public class HistoryDetailFragment extends Fragment {
         rv_item.setAdapter(adapter);
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
@@ -149,17 +152,6 @@ public class HistoryDetailFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-    }
-
-    private void setFragment(Fragment fragment) // fungsi buat pindah - pindah fragment
-    {
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        for(int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-            fm.popBackStack();
-        }
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameFragment,fragment).addToBackStack(null);
-        fragmentTransaction.commit();
     }
 
     public void setOngoingModel(OngoingModel ongoingModel) {

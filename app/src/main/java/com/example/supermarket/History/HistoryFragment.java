@@ -64,6 +64,7 @@ public class HistoryFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);

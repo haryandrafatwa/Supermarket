@@ -60,6 +60,7 @@ public class PaymentBillFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -86,6 +87,7 @@ public class PaymentBillFragment extends Fragment {
             }
         });
 
+        //mengambil data user dari firebase database
         DatabaseReference userRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         userRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,7 +105,7 @@ public class PaymentBillFragment extends Fragment {
 
     }
 
-    public void alertFillData(){ // fungsi untuk membuat alert dialog ketika ingin logout
+    public void alertFillData(){ // fungsi untuk membuat alert dialog ketika selesai pengisian form
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(getActivity());
 
         // Setting Dialog Title
@@ -119,6 +121,7 @@ public class PaymentBillFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 // Write your code here to execute after dialog
 
+                //proses penambahan data transaksi ke dalam firebase database
                 DatabaseReference notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
                 notifRefs.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -195,6 +198,7 @@ public class PaymentBillFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");

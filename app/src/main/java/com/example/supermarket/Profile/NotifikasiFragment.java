@@ -67,6 +67,7 @@ public class NotifikasiFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -86,6 +87,7 @@ public class NotifikasiFragment extends Fragment {
         };
         initRecyclerViewItem();
 
+        //proses pengambilan notifikasi yang belum didelete
         notifRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Notif");
         notifRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -147,6 +149,7 @@ public class NotifikasiFragment extends Fragment {
             tv_notif_empty.setVisibility(View.VISIBLE);
         }
 
+        //proses melakukan delete all notif
         tv_delete_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +183,7 @@ public class NotifikasiFragment extends Fragment {
         rv_item.setAdapter(adapter);
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");

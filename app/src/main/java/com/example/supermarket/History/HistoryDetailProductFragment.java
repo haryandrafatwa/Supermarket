@@ -67,6 +67,7 @@ public class HistoryDetailProductFragment extends Fragment {
         initialize();;
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         bottomNavigationView = getActivity().findViewById(R.id.bottomNavBar);
@@ -87,6 +88,7 @@ public class HistoryDetailProductFragment extends Fragment {
         tv_category.setText(cartModel.getCategory());
         tv_amount.setText(cartModel.getAmount()+" Pcs");
 
+        //proses mengambil data rating produk yg ada pada orderan
         productRefs = FirebaseDatabase.getInstance().getReference().child("Product").child(cartModel.getId_produk());
         productRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,6 +103,7 @@ public class HistoryDetailProductFragment extends Fragment {
             }
         });
 
+        //proses pengeditan rating bar produk ke firebase database
         orderRefs = FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Order").child(idOrder).child(cartModel.getId_produk());
         orderRefs.addValueEventListener(new ValueEventListener() {
             @Override
@@ -127,6 +130,7 @@ public class HistoryDetailProductFragment extends Fragment {
             }
         });
 
+        //proses utk mengatur rating bar
         etRating.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -163,6 +167,7 @@ public class HistoryDetailProductFragment extends Fragment {
         });
     }
 
+    // fungsi untuk membuat pesan dialog ketika sudah melakukan report
     private void initializeDialogReport() {
 
         android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
@@ -197,6 +202,7 @@ public class HistoryDetailProductFragment extends Fragment {
 
     }
 
+    // fungsi untuk membuat alert dialog ketika ingin mereport produk
     public void alertReport(){ // fungsi untuk membuat alert dialog ketika ingin logout
         AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(getActivity());
 
@@ -226,6 +232,7 @@ public class HistoryDetailProductFragment extends Fragment {
 
     }
 
+    //method utk mensetting toolbar agar tidak ada title dan juga agar ada tombol back
     private void setToolbar() {
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");

@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter berfungsi utk menampilkan item-item pada recycler view
 public class HistoryDetailAdapter extends RecyclerView.Adapter<HistoryDetailAdapter.ViewHolder> {
 
     private List<CartModel> mList = new ArrayList<>();
@@ -30,6 +31,7 @@ public class HistoryDetailAdapter extends RecyclerView.Adapter<HistoryDetailAdap
 
     private DatabaseReference cartRefs, productRefs;
 
+    //adapter konstruktor
     public HistoryDetailAdapter(List<CartModel> mList, Context mContext, FragmentActivity mActivity, String idOrder) {
         this.mList = mList;
         this.mContext = mContext;
@@ -37,6 +39,7 @@ public class HistoryDetailAdapter extends RecyclerView.Adapter<HistoryDetailAdap
         this.idOrder = idOrder;
     }
 
+    //method utk menentukan layout mana yg akan dijadikan layout item pada recycler view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
@@ -46,6 +49,7 @@ public class HistoryDetailAdapter extends RecyclerView.Adapter<HistoryDetailAdap
         return viewHolder;
     }
 
+    //method utk mengassign objek2 sesuai dengan model item
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final int position = i;
@@ -79,6 +83,7 @@ public class HistoryDetailAdapter extends RecyclerView.Adapter<HistoryDetailAdap
         return mList.size();
     }
 
+    //class utk menampung objek2 yang ada pada halaman item list recycler view
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_nama_produk, tv_category, tv_amount;

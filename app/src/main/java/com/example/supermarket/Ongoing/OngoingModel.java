@@ -1,5 +1,6 @@
 package com.example.supermarket.Ongoing;
 
+//class utk menampung attribute2 yang dibutuhkan oleh item list recycler view
 public class OngoingModel {
 
     private String id, date, name, payMethod, address;

@@ -58,6 +58,7 @@ public class PaymentCheckoutFragment extends Fragment {
         initialize();
     }
 
+    //method utk menginisiasi seluruh objek yang ada pada halaman ini
     private void initialize(){
 
         button = getActivity().findViewById(R.id.btnFinish);

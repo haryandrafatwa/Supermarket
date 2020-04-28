@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter berfungsi utk menampilkan item-item pada recycler view
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
 
     private List<SearchModel> mList = new ArrayList<>();
@@ -32,6 +33,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         void onClick(int position, String str);//pass your object types.
     }
 
+    //adapter konstruktor
     public SearchAdapter(List<SearchModel> mList, Context mContext, FragmentActivity mActivity, onItemClickListner onItemClickListner) {
         this.mList = mList;
         this.mContext = mContext;
@@ -39,6 +41,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         this.onItemClickListner = onItemClickListner ;
     }
 
+    //method utk menentukan layout mana yg akan dijadikan layout item pada recycler view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         mContext = viewGroup.getContext();
@@ -48,6 +51,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         return viewHolder;
     }
 
+    //method utk mengassign objek2 sesuai dengan model item
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         final int position = i;
@@ -75,6 +79,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         return mList.size();
     }
 
+    //class utk menampung objek2 yang ada pada halaman item list recycler view
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tv_nama_kategori;
